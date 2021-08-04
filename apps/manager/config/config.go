@@ -1,9 +1,7 @@
 package config
 
 import (
-	"time"
-
-	"github.com/spf13/viper"
+	"os"
 )
 
 type Config struct {
@@ -11,34 +9,27 @@ type Config struct {
 }
 
 type serverConfig struct {
-	Port         int
-	ReadTimeOut  time.Duration
-	WriteTimeOut time.Duration
+	Port         string
+	Name         string
+	Host         string
+	AdminUrl      string
+	AuthUrl   string
 }
 
 func New() (*Config, error) {
-	var c Config
-
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath("../")
-	viper.AddConfigPath(".")
-	viper.AutomaticEnv()
-
-	if err := viper.ReadInConfig(); err != nil {
-		return nil, err
-	}
-
-	if err := viper.Unmarshal(&c); err != nil {
-		return nil, err
-	}
+	port:= os.Getenv("PORT")
+	name := os.Getenv("NAME")
+	host := os.Getenv("HOST")
+	adminUrl := os.Getenv("ADMIN_URL")
+	authUrl := os.Getenv("MANAGER_URL")
 
 	return &Config{
 		Server: &serverConfig{
-			Port:         c.Server.Port,
-			ReadTimeOut:  c.Server.ReadTimeOut * time.Second,
-			WriteTimeOut: c.Server.WriteTimeOut * time.Second,
+			Port:         port,
+			Name:         name,
+			Host:         host,
+			AdminUrl:      adminUrl,
+			AuthUrl:   authUrl,
 		},
 	}, nil
-
 }

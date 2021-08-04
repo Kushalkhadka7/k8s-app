@@ -22,10 +22,8 @@ type Creator interface {
 func New(c *config.Config, router *router.Router) Creator {
 
 	s := &http.Server{
-		Addr:         fmt.Sprintf(":%d", c.Server.Port),
+		Addr:         fmt.Sprintf(":%s", c.Server.Port),
 		Handler:      router,
-		ReadTimeout:  c.Server.ReadTimeOut,
-		WriteTimeout: c.Server.WriteTimeOut,
 	}
 
 	return &Server{
