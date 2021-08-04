@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: manager # Name of the contianer.
-          image: crkushal7/manager:1.0.0
+          image: crkushal7/manager:1.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

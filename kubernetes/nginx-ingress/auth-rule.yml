@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: auth
+spec:
+  rules:
+    - host: app.auth.com
+      http:
+        paths:
+          - backend:
+              serviceName: auth-service
+              servicePort: 4000

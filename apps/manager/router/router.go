@@ -61,7 +61,7 @@ func New(config *config.Config) *Router {
 		})
 	})
 
-	r.GET("/manager", func(c *gin.Context) {
+	r.GET("/", func(c *gin.Context) {
 		cmd := exec.Command("hostname", "-i")
 		value, err := cmd.Output()
 		if err != nil {
@@ -87,7 +87,7 @@ func New(config *config.Config) *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get(fmt.Sprintf("%s/info",config.Server.AuthUrl))
+		resp, err := http.Get("http://10.101.40.192:4000/info")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -122,7 +122,7 @@ func New(config *config.Config) *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get(fmt.Sprintf("%s/info",config.Server.AdminUrl))
+		resp, err := http.Get("http://10.108.227.132:3000/info")
 		if err != nil {
 			fmt.Println(err)
 		}

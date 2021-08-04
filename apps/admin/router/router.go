@@ -57,7 +57,7 @@ func New(config *config.Config) *Router {
 		})
 	})
 
-	r.GET("/admin", func(c *gin.Context) {
+	r.GET("/", func(c *gin.Context) {
 		cmd := exec.Command("hostname", "-i")
 		value, err := cmd.Output()
 		if err != nil {
@@ -83,7 +83,7 @@ func New(config *config.Config) *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get(config.Server.ManagerUrl)
+		resp, err := http.Get("http://10.96.180.160:5000/info")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -100,8 +100,8 @@ func New(config *config.Config) *Router {
 		}
 
 		c.JSON(200, gin.H{
-			"message": "Success",
-			"data": map[string]interface{}{
+		"message": "Success",
+		"data": map[string]interface{}{
 				"name":         config.Server.Name,
 				"host":         c.Request.Host,
 				"url":          c.Request.RequestURI,
@@ -118,7 +118,7 @@ func New(config *config.Config) *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get(config.Server.AuthUrl)
+		resp, err := http.Get("http://10.101.40.192:4000/info")
 		if err != nil {
 			fmt.Println(err)
 		}
