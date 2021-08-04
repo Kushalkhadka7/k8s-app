@@ -1,6 +1,7 @@
 package router
 
 import (
+	"auth/config"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -16,7 +17,7 @@ type Router struct {
 }
 
 // New initializes new gin router.
-func New() *Router {
+func New(config *config.Config) *Router {
 	gin.ForceConsoleColor()
 	r := gin.New()
 
@@ -42,12 +43,14 @@ func New() *Router {
 		c.JSON(200, gin.H{
 			"message": "Success",
 			"data": map[string]interface{}{
-				"name":          "auth",
+				"name":         config.Server.Name,
 				"HOST_IP_ADDR":  string(value),
 				"host":          c.Request.Host,
 				"USER_NAME":     string(userName),
 				"PASSWORD":      string(password),
 				"url":           c.Request.RequestURI,
+				"ADMIN_URL":     config.Server.AdminUrl,
+				"MANAGER_URL":   config.Server.ManagerUrl,
 				"USER_NAME_ENV": os.Getenv("USER_NAME_ENV"),
 				"PASSWORD_ENV":  os.Getenv("PASSWORD_ENV"),
 			},
@@ -64,7 +67,7 @@ func New() *Router {
 		c.JSON(200, gin.H{
 			"message": "Success",
 			"data": map[string]interface{}{
-				"name":         "auth",
+				"name":         config.Server.Name,
 				"host":         c.Request.Host,
 				"url":          c.Request.RequestURI,
 				"HOST_IP_ADDR": string(value),
@@ -80,7 +83,7 @@ func New() *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get("http://localhost:5000/info")
+		resp, err := http.Get(fmt.Sprintf("%s/info",config.Server.ManagerUrl))
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -99,7 +102,7 @@ func New() *Router {
 		c.JSON(200, gin.H{
 			"message": "Success",
 			"data": map[string]interface{}{
-				"name":         "manager",
+				"name":         config.Server.Name,
 				"host":         c.Request.Host,
 				"url":          c.Request.RequestURI,
 				"HOST_IP_ADDR": string(value),
@@ -116,7 +119,7 @@ func New() *Router {
 			fmt.Println(err)
 		}
 
-		resp, err := http.Get("http://localhost:5000/info")
+		resp, err := http.Get(fmt.Sprintf("%s/info",config.Server.AdminUrl))
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -135,7 +138,7 @@ func New() *Router {
 		c.JSON(200, gin.H{
 			"message": "Success",
 			"data": map[string]interface{}{
-				"name":         "manager",
+				"name":         config.Server.Name,
 				"host":         c.Request.Host,
 				"url":          c.Request.RequestURI,
 				"HOST_IP_ADDR": string(value),

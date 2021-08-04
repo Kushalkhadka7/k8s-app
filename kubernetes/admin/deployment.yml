@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  labels:
+    app: admin
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: admin
+  template:
+    metadata:
+      labels:
+        app: admin
+    spec:
+      containers:
+        - name: admin
+          image: crkushal7/admin:1.0.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: admin
+                  key: PORT
+            - name: NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: admin
+                  key: NAME
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: admin
+                  key: HOST
+            - name: AUTH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: admin
+                  key: AUTH_URL
+            - name: MANAGER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: admin
+                  key: MANAGER_URL

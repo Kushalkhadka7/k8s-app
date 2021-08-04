@@ -16,7 +16,7 @@ func main() {
 		panic(err)
 	}
 
-	router := router.New()
+	router := router.New(config)
 
 	server := server.New(config, router)
 	if err := server.Start(); err != nil {

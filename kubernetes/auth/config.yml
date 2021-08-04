@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth
+data:
+  PORT: '4000'
+  NAME: auth
+  HOST: localhost
+  ADMIN_URL: admin-service
+  MANAGER_URL: manager-service
