@@ -18,6 +18,11 @@ spec:
         - name: auth
           image: crkushal7/auth:2.0.0
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '200m'
+            requests:
+              cpu: '100m'
           ports:
             - containerPort: 4000
               protocol: TCP

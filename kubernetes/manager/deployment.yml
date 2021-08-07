@@ -18,6 +18,11 @@ spec:
         - name: manager # Name of the contianer.
           image: crkushal7/manager:1.0.2
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '200m'
+            requests:
+              cpu: '100m'
           ports:
             - containerPort: 5000
               protocol: TCP

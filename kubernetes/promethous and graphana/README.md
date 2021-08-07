@@ -1,0 +1,21 @@
+<!-- Monitoring -->
+
+- Promethous is used to colect metircs.
+- Graphana is used for visualization.
+- Promethous retirves the metrices, graphana grabs the metrices statics and make visualization.
+- Promethous can be used standalone but graphana provides rich in visualization.
+- Why promethous for visualization, because it is very dynamic enviornment and cope well with k8's.
+- Before it we need to have dynamic volume provising enabled.(PV and PVC), because promethous have to save the metrics logs.
+- Once that is completed add the promethous repo by using **helm add repo <repo_name>**
+- **helm update repo**
+- Download and save the values file.
+- **helm inspect values prometheus-community/kube-prometheus-stack > prometheus.yml**
+- Update the values as requied like port, storageClass and sevice type.
+- **helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --values prometheus.yml**
+- The will install prometheus and graphana
+- **kubectl port-forward deployment/prometheus-grafana 3000**
+- Now graphana dashboard will be available in 3000 port localhost.
+- Use the username and password specifeid in the values file and login.
+- Add data source in graphana and we are good to go.
+- Add dashboard in graphana.
+- Or we can import prebult dashbaord by searching graphan dashboards and using the dashboard id to impor the dashboard.

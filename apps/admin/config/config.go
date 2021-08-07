@@ -9,15 +9,15 @@ type Config struct {
 }
 
 type serverConfig struct {
-	Port         string
-	Name         string
-	Host         string
-	AuthUrl      string
-	ManagerUrl   string
+	Port       string
+	Name       string
+	Host       string
+	AuthUrl    string
+	ManagerUrl string
 }
 
 func New() (*Config, error) {
-	port:= os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	name := os.Getenv("NAME")
 	host := os.Getenv("HOST")
 	authUrl := os.Getenv("AUTH_URL")
@@ -25,11 +25,11 @@ func New() (*Config, error) {
 
 	return &Config{
 		Server: &serverConfig{
-			Port:         port,
-			Name:         name,
-			Host:         host,
-			AuthUrl:      authUrl,
-			ManagerUrl:   managerUrl,
+			Port:       port,
+			Name:       name,
+			Host:       host,
+			AuthUrl:    authUrl,
+			ManagerUrl: managerUrl,
 		},
 	}, nil
 }
