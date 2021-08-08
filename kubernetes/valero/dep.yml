@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valero
+  labels:
+    app: valero
+spec:
+  selector:
+    matchLabels:
+      app: valero
+  template:
+    metadata:
+      labels:
+        app: valero
+    spec:
+      containers:
+        - name: valero
+          image: ubuntu:18.04
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9000
+              protocol: TCP
