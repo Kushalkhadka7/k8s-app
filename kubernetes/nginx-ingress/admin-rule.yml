@@ -8,5 +8,5 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: admin-service
+              serviceName: admin
               servicePort: 3000

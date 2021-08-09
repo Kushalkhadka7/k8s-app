@@ -1,6 +1,11 @@
 SHELL :=/bin/bash
 CWD := $(PWD)
 
+build-local:
+	@docker build \
+	-t app/manager \
+    --target dev .
+
 build-dev:
 	@docker build \
 	-t app/manager \

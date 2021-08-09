@@ -1,0 +1,5 @@
+Log file created at: 2021/08/08 12:07:54
+Running on machine: crkushal
+Binary: Built with gc go1.16.5 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0808 12:07:54.971249   82284 proxy.go:68] proxy command started

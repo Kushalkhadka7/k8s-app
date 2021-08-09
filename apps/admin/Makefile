@@ -1,6 +1,11 @@
 SHELL :=/bin/bash
 CWD := $(PWD)
 
+build-local:
+	@docker build \
+	-t app/admin \
+    --target dev .
+
 build-dev:
 	@docker build \
 	-t app/admin \
@@ -11,7 +16,7 @@ build-prod:
 	-t app/admin \
 	--target prod .
 
-run:
+run-local:
 	@docker run \
 	-p 3000:3000 \
   	--env-file=.env \
