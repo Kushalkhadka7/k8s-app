@@ -1,10 +1,10 @@
 <!-- Monitoring -->
 
-# Monitoring (Prometheus and Graphana)
+# Monitoring (Prometheus and Grafana)
 
 - Promethous is used to colect metircs.
 - Graphana is used for visualization.
-- Promethous retirves the metrices, graphana grabs the metrices statics and make visualization.
+- Promethous retirves the metrices, grafana grabs the metrices statics and make visualization.
 - Promethous can be used standalone but graphana provides rich in visualization.
 - Why promethous for visualization, because it is very dynamic enviornment and cope well with k8's.
 
@@ -47,5 +47,5 @@ kubectl port-forward deployment/prometheus-grafana 3000
 - Now the grafana dashboard will be accessible on `localhost:3000`.
 
 - Use the `username` and `password` specifeid in the values file and login to the `grafana` dashboard.
-- Add data source in graphana and add grafana dashboard.
+- Add data source in grafana and add grafana dashboard.
 - Or prebuilt dashbaord can be obtained by searching `grafanaha` `dashboards` and using the dashboard id to import the dashboard.
