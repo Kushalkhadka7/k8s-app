@@ -1,5 +1,3 @@
-<!-- Monitoring -->
-
 # Monitoring (Prometheus and Grafana)
 
 - Promethous is used to colect metircs.
@@ -22,27 +20,26 @@
   # Update helm repo.
 
   helm update repo
-
   ```
 
 - Download the values file.
 
-```
-helm inspect values prometheus-community/kube-prometheus-stack > prometheus.yml
-```
+  ```
+  helm inspect values prometheus-community/ kube-prometheus-stack > prometheus.yml
+  ```
 
 - Update the values as requied like port, storageClass and sevice type.
 
-```
-helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --values prometheus.yml
-```
+  ```
+  helm install prometheus prometheus-community/ kube-prometheus-stack --namespace monitoring --values  prometheus.yml
+  ```
 
 - It will install `prometheus` and `grafana` in `monitoring` namespace.
 - By default the service will not be exposed so to access the `grafana` dashboard we need to port-forward.
 
-```
-kubectl port-forward deployment/prometheus-grafana 3000
-```
+  ```
+  kubectl port-forward deployment/prometheus-grafana 3000
+  ```
 
 - Now the grafana dashboard will be accessible on `localhost:3000`.
 
