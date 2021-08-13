@@ -29,6 +29,6 @@ K8's app arichitecture consist of 3 worker node cluster, contorlled by 2 master 
 ### Installation
 
 - Git clone the repository.
-- Setup local develpement enviornemt ([Setup](#Setup)).
+- Setup local develpement enviornemt ([Setup](docs/setup/README.md)).
 - Once the setup is completed our cluster will be ready, now we can deploy our application.
 - Deploy the applications ([Deploy](#Deploy))
