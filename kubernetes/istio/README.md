@@ -97,3 +97,7 @@ spec:
 ```
 
 Now the application will be accessible.
+
+## Diagram
+
+![Architecture Diagram](asset.png)

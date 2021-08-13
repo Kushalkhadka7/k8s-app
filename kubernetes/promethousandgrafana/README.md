@@ -46,3 +46,7 @@
 - Use the `username` and `password` specifeid in the values file and login to the `grafana` dashboard.
 - Add data source in grafana and add grafana dashboard.
 - Or prebuilt dashbaord can be obtained by searching `grafanaha` `dashboards` and using the dashboard id to import the dashboard.
+
+## Diagram
+
+![Architecture Diagram](asset.png)

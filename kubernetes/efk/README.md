@@ -29,3 +29,7 @@
   ```
   kubectl port-forward kibana-6c9fb4b5b7-plbg2 5601:5601  --namespace=kube-logging
   ```
+
+## Diagram
+
+![Architecture Diagram](efk.png)

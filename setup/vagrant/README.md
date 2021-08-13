@@ -1,4 +1,4 @@
-# Set up Kubernetes Cluster using kubeadm with Vagrant
+# Setup Kubernetes Cluster using kubeadm with Vagrant
 
 ## Overview
 
