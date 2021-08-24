@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Kushalkhadka7/k8s-app
     targetRevision: HEAD
-    path: kubernetes
+    path: kubernetes/admin
   destination:
     server: https://kubernetes.default.svc
     namespace: default
