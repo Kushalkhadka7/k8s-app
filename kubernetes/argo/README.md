@@ -27,3 +27,7 @@
   ```
   cd app && kc apply -f app.yaml -n argocd
   ```
+
+## Diagram
+
+![Architecture Diagram](asset.png)
