@@ -9,8 +9,6 @@ RUN GOOS=linux
 # Enable go modules
 ENV GO111MODULE=on
 
-RUN echo "hell world"
-
 COPY . /app/
 
 ENV SHELL=/bin/bash
