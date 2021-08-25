@@ -1,11 +1,15 @@
-name: k8s-app
+name: Packages - ui & common
 
 on:
   push:
-    - master
+    branches:
+      - dev
+      - master
+
 defaults:
   run:
     working-directory: "./"
+    
 jobs:
   Build:
     runs-on: ubuntu-latest
