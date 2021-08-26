@@ -24,7 +24,6 @@ jobs:
 
       - name: Build docker images
         run: |
-          #
           apps=$(git diff --name-only | sort -u | grep -oP "apps\/.+?\/" | cat | uniq)
           APP_DOCKER_REGISTRY="crkushal7"
 
@@ -72,4 +71,3 @@ jobs:
           else
             printf "Skipping no changes detected...\n"
           fi
-          #

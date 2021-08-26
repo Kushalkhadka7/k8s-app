@@ -10,7 +10,7 @@
 ### Building
 
 ```
-# Build the admin app for development enviornemt.
+# Build the admin app for development.
 
 make build-local
 ```
