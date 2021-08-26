@@ -37,6 +37,14 @@ if (( ${#apps[@]} != 0 )); then
 
     docker build -t $image_tag --target dev $app
 
+
+    git tag -a $github_tag -m "my version 1.4"
+
+    git push origin --tags
+
+    docker login -u "crkushal7" -p "d45444eb-d5d9-4025-a482-d7482517e55a"
+
+    docker push $image_tag
     printf "Successfully build docker images...\n"
   done
 else

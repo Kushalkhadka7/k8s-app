@@ -17,16 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup semver bash
-        run: |
-          sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semversion && sudo chmod +x /usr/local/bin/semversion
-          semversion --version
-
-      - name: Setup hub
-        run: |
-          sudo snap install hub --classic
-          hub --version
-
       - name: Setup git
         run: |
           git config --global user.name "Kushal"
