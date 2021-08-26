@@ -1,4 +1,4 @@
-name: Packages - ui & common
+name: K8s-app
 
 on:
   push:
