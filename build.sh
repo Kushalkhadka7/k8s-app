@@ -7,7 +7,7 @@ apps=$(git diff --name-only | sort -u | grep -oP "apps\/.+?\/" | cat | uniq)
 APP_DOCKER_REGISTRY="crkushal7"
 
 if (( ${#apps[@]} != 0 )); then
-  printf "Building docker images...\n"
+  printf "Building docker images...\n$apps"
 
   for app in $apps; do
     app_name=${app/apps\//}

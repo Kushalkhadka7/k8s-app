@@ -1,3 +1,4 @@
+# Auth.
 # Stage: Development.
 FROM golang:alpine as dev
 
