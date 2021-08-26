@@ -16,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup git
         run: |
@@ -23,6 +25,9 @@ jobs:
           git config --global user.email "kushal@gmail.com"
 
       - name: Build docker images
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           apps=$(git diff --name-only | sort -u | grep -oP "apps\/.+?\/" | cat | uniq)
           APP_DOCKER_REGISTRY="crkushal7"
@@ -63,7 +68,7 @@ jobs:
 
               git push origin --tags
 
-              docker login -u "crkushal7" -p "d45444eb-d5d9-4025-a482-d7482517e55a"
+              docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 
               docker push $image_tag
               printf "Successfully build docker images...\n"
