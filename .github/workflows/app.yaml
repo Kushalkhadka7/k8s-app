@@ -17,9 +17,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Setup semver bash
+        run: |
+          sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semversion && sudo chmod +x /usr/local/bin/semversion
+          semversion --version
 
-      - name: Publish new release
-        run: release.sh
+      - name: Setup hub
+        run: |
+          sudo snap install hub --classic
+          hub --version
+
+      - name: Setup git
+        run: |
+          git config --global user.name "Kushal"
+          git config --global user.email "kushal@gmail.com"
+
+      - name: Build docker images
+        run: |
+          ./build.sh

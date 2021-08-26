@@ -6,7 +6,7 @@ apps=$(git diff --name-only | sort -u | grep -oP "apps\/.+?\/" | cat | uniq)
 
 APP_DOCKER_REGISTRY="crkushal7"
 
-if (( ${#apps[@]} )); then
+if (( ${#apps[@]} != 0 )); then
   printf "Publishing images...\n"
 
   for app in $apps; do
@@ -29,14 +29,6 @@ if (( ${#apps[@]} )); then
     image_tag="$APP_DOCKER_REGISTRY/$app_name:$new_app_version"
 
     docker build -t $image_tag --target dev $app
-
-    git tag -a $github_tag -m "my version 1.4"
-
-    git push origin --tags
-
-    docker login -u "crkushal7" -p "d45444eb-d5d9-4025-a482-d7482517e55a"
-
-    docker push $image_tag
   done
 else
   printf "Skipping no changes detected...\n"

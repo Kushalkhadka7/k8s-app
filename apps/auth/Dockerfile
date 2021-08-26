@@ -9,6 +9,7 @@ RUN GOOS=linux
 # Enable go modules
 ENV GO111MODULE=on
 
+# Copy app data
 COPY . /app/
 
 ENV SHELL=/bin/bash
